@@ -29,10 +29,12 @@ function setup() {
 
 function draw() {
 	background(255);
-	rect (0, 0, width/2, height-1);
+	noFill();
+  rect (0, 0, width/2, height-1);
 	rect (width/2, 0, width/2-1, height-1);
-
+  
   // draw puck
+  fill(0);
   ellipse(puck.x, puck.y, puck.r*2);
   
   // move puck
@@ -76,7 +78,7 @@ function draw() {
     if (puck.y > player1.y && puck.y < player1.y + player1.ht) {
       puck.xSpeed = abs(puck.xSpeed);
     } else {
-      player2.score = player2.score + 1;
+     //??
     }
   }
   
@@ -86,10 +88,18 @@ function draw() {
     if (puck.y > player2.y && puck.y < player2.y + player2.ht) {
       puck.xSpeed = -abs(puck.xSpeed);
     } else {
-      player1.score = player1.score + 1;
+     //??
     }
   }
 	
+  if (puck.x + puck.r < 0){
+   player2.score += 1; 
+  }
+  
+  if (puck.x + puck.r > width){
+   player1.score += 1; 
+  }
+  
 	if (puck.x + puck.r > width) {
 		puck.x = width/2;
 	}
